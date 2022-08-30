@@ -35,47 +35,54 @@ const Header = () => {
   };
   return (
     <main className={ styles.main }>
-      <button type="button" onClick={ redirectToProfile }>
-        <img data-testid="profile-top-btn" src={ profileIcon } alt="icon-profile" />
-      </button>
-      {
-        pathTitlesStrConvertOtherRoutes(favDoneRoutes) ? null
-          : (
-            <h1 className={ styles.h1 } data-testid="page-title">
-              { capitalizeFirstLetter(pathname) }
-            </h1>
-          )
-      }
-      {
-        pathTitlesStrConvertDoneFav(doneRoute)
-          ? (
-            <h2 data-testid="page-title">
-              Done Recipes
-            </h2>
-          ) : null
-      }
-      {
-        pathTitlesStrConvertDoneFav(favRoute)
-          ? (
-            <h2 data-testid="page-title">
-              Favorite Recipes
-            </h2>
-          )
-          : null
-      }
-      {
-        searchbarConditional()
-          ? null
-          : (
-            <button
-              src={ searchIcon }
-              type="button"
-              onClick={ () => setToggle(!isToggle) }
-            >
-              <img src={ searchIcon } alt="profile-icon" data-testid="search-top-btn" />
-            </button>
-          )
-      }
+      <div className={ styles.div }>
+        <button
+          className={ `${styles.button__header} ${styles.button__hover__header}` }
+          type="button"
+          onClick={ redirectToProfile }
+        >
+          <img data-testid="profile-top-btn" src={ profileIcon } alt="icon-profile" />
+        </button>
+        {
+          pathTitlesStrConvertOtherRoutes(favDoneRoutes) ? null
+            : (
+              <h1 className={ styles.h1 } data-testid="page-title">
+                { capitalizeFirstLetter(pathname) }
+              </h1>
+            )
+        }
+        {
+          pathTitlesStrConvertDoneFav(doneRoute)
+            ? (
+              <h2 data-testid="page-title">
+                Done Recipes
+              </h2>
+            ) : null
+        }
+        {
+          pathTitlesStrConvertDoneFav(favRoute)
+            ? (
+              <h2 data-testid="page-title">
+                Favorite Recipes
+              </h2>
+            )
+            : null
+        }
+        {
+          searchbarConditional()
+            ? null
+            : (
+              <button
+                className={ `${styles.button__header} ${styles.button__hover__header}` }
+                src={ searchIcon }
+                type="button"
+                onClick={ () => setToggle(!isToggle) }
+              >
+                <img src={ searchIcon } alt="profile-icon" data-testid="search-top-btn" />
+              </button>
+            )
+        }
+      </div>
       { isToggle
       && <SearchBar />}
     </main>

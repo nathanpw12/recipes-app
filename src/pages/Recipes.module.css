@@ -1,6 +1,52 @@
-.card-container {
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card__container {
   display: flex;
   flex-flow: row wrap;
-  gap: 10px;
-  max-width: 250px;
+  gap: 25px;
+  justify-content: center;
+  max-width: 360px;
+} 
+
+.section {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  /* max-width: 200px; */
+  padding-bottom: 12px;
+  /* gap: 1px; */
 }
+
+.button {
+  background-color: #8f69f7;
+  border: 1px solid #262a34;
+  border-radius: 40px;
+  width: 30%;
+  margin-left: 2px;
+  margin-bottom: 5px;
+  justify-content: center;
+  /* border-radius: 5px; */
+  /* margin-top: 5px; */
+  padding: 4px;
+  color: white;
+}
+
+.button__hover:hover {
+  background-color: #764bee;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* 
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */

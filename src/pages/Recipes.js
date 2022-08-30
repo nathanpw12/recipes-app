@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import requestCategoriesThunk from '../redux/actions/requestCategoriesThunk';
-import requestRecipesThunk from '../redux/actions/requestRecipesThunk';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
-import styles from './Recipes.module.css';
-import requestFilteredCategoriesThunk from '../redux/actions/requestFilteredRecipesThunk';
 import { showAllCategoriesAction } from '../redux/actions/recipeDataActions';
+import requestCategoriesThunk from '../redux/actions/requestCategoriesThunk';
+import requestFilteredCategoriesThunk from '../redux/actions/requestFilteredRecipesThunk';
+import requestRecipesThunk from '../redux/actions/requestRecipesThunk';
+import styles from './Recipes.module.css';
 
 const Recipes = () => {
   const { location: { pathname }, push } = useHistory();
@@ -94,6 +94,7 @@ const Recipes = () => {
       const { strCategory: category } = categoryObj;
       return (
         <button
+          className={ `${styles.button} ${styles.button__hover}` }
           data-testid={ `${category}-category-filter` }
           key={ category }
           type="button"
@@ -121,10 +122,11 @@ const Recipes = () => {
       <Header />
       {
         areAllFetchesDone && (
-          <div>
-            <section>
+          <div className={ styles.main }>
+            <section className={ styles.section }>
               <button
                 type="button"
+                className={ `${styles.button} ${styles.button__hover}` }
                 data-testid="All-category-filter"
                 onClick={ () => handleShowAllCategories() }
               >
@@ -132,7 +134,8 @@ const Recipes = () => {
               </button>
               { renderCategoryButtons() }
             </section>
-            <main className={ styles['card-container'] }>
+
+            <main className={ styles.card__container }>
               { renderCards() }
             </main>
           </div>

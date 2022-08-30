@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import requestSearchFilterThunk from '../redux/actions/requestSearchFilterDataThunk';
+import styles from './Header.module.css';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
@@ -23,8 +24,10 @@ const SearchBar = () => {
   return (
     <div className="searchBar">
       <input
+        className={ `${styles.input} ${styles.input__placeholder}` }
         data-testid="search-input"
         value={ search }
+        placeholder="lookup for recipe"
         name="inputName"
         onChange={ ({ target: { value } }) => setSearch(value) }
         type="text"
@@ -33,6 +36,7 @@ const SearchBar = () => {
 
         <label htmlFor="ingredient">
           <input
+            className={ styles.checkbox }
             name="test"
             value="ingredient"
             type="radio"
@@ -45,6 +49,7 @@ const SearchBar = () => {
 
         <label htmlFor="name">
           <input
+            className={ styles.checkbox }
             value="name"
             name="test"
             type="radio"
@@ -57,6 +62,7 @@ const SearchBar = () => {
 
         <label htmlFor="firstLetter">
           <input
+            className={ styles.checkbox }
             value="first-letter"
             name="test"
             type="radio"
@@ -67,13 +73,14 @@ const SearchBar = () => {
           First letter
         </label>
       </div>
-      <div>
+      <div className={ styles.main }>
         <button
+          className={ `${styles.button} ${styles.button__hover}` }
           type="button"
           data-testid="exec-search-btn"
           onClick={ () => handleClick() }
         >
-          Procurar
+          Search
         </button>
       </div>
     </div>
