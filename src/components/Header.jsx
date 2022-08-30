@@ -4,6 +4,7 @@ import capitalizeFirstLetter from '../helpers/capitalizeFirstLetter';
 import { doneRoute, favDoneRoutes, favRoute } from '../helpers/headerRouteType';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import styles from './Header.module.css';
 import SearchBar from './SearchBar';
 
 const Header = () => {
@@ -33,21 +34,18 @@ const Header = () => {
     }
   };
   return (
-    <div>
-      {/* PROFILE TOP BTN */}
+    <main className={ styles.main }>
       <button type="button" onClick={ redirectToProfile }>
         <img data-testid="profile-top-btn" src={ profileIcon } alt="icon-profile" />
       </button>
-
       {
         pathTitlesStrConvertOtherRoutes(favDoneRoutes) ? null
           : (
-            <h2 data-testid="page-title">
+            <h1 className={ styles.h1 } data-testid="page-title">
               { capitalizeFirstLetter(pathname) }
-            </h2>
+            </h1>
           )
       }
-
       {
         pathTitlesStrConvertDoneFav(doneRoute)
           ? (
@@ -56,7 +54,6 @@ const Header = () => {
             </h2>
           ) : null
       }
-
       {
         pathTitlesStrConvertDoneFav(favRoute)
           ? (
@@ -81,7 +78,7 @@ const Header = () => {
       }
       { isToggle
       && <SearchBar />}
-    </div>
+    </main>
   );
 };
 export default Header;
