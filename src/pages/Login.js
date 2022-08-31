@@ -53,7 +53,6 @@ const Login = () => {
               onChange={ ({ target: { value } }) => setPassword(value) }
               value={ password }
             />
-
             <button
               className={ `${styles.button} ${styles.button__hover}
             ${styles.button__disable}` }
@@ -64,8 +63,8 @@ const Login = () => {
             >
               Enter
             </button>
-          </div>
 
+          </div>
           <button
             type="button"
             className={ `${styles.show__password} ${styles.button__eye}` }

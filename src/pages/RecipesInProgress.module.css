@@ -103,3 +103,6 @@
   cursor: pointer;
 }
 
+.line {
+  text-decoration: line-through;
+}

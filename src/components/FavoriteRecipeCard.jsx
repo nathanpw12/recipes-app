@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import clipboardCopy from 'clipboard-copy';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import shareIcon from '../images/shareIcon.svg';
-import styles from './DoneRecipeCard.module.css';
-import favoriteIcon from '../images/blackHeartIcon.svg';
 import { removeFavoriteRecipe } from '../helpers/localStorage';
+import favoriteIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/shareIcon.svg';
+import styles from '../pages/FavoriteRecipes.module.css';
 
 function FavoriteRecipeCard({ data, index, filterData }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -51,47 +51,53 @@ function FavoriteRecipeCard({ data, index, filterData }) {
   const topText = `${alcoholicOrNot || nationality} - ${category}`;
 
   return (
-    <div>
-      <Link to={ `/${type}s/${id}` }>
-        <img
-          alt="foobar"
-          src={ image }
-          data-testid={ `${index}-horizontal-image` }
-          className={ styles.image }
-        />
-      </Link>
-      <div>
-        <div>
-          <h5 data-testid={ `${index}-horizontal-top-text` }>
-            { topText }
-          </h5>
-        </div>
+    <div className={ styles.main }>
+      <div className={ styles.card }>
         <Link to={ `/${type}s/${id}` }>
-          <h4 data-testid={ `${index}-horizontal-name` }>
-            { name }
-          </h4>
+          <img
+            alt="foobar"
+            src={ image }
+            data-testid={ `${index}-horizontal-image` }
+            className={ styles.image }
+          />
         </Link>
-        { isCopied && <span>Link copied!</span> }
-        <button
-          type="button"
-          onClick={ () => handleCopyClick() }
-        >
-          <img
-            alt="shareButton"
-            src={ shareIcon }
-            data-testid={ `${index}-horizontal-share-btn` }
-          />
-        </button>
-        <button
-          type="button"
-          onClick={ () => handleRemoveFavoriteClick() }
-        >
-          <img
-            alt="favorite button"
-            src={ favoriteIcon }
-            data-testid={ `${index}-horizontal-favorite-btn` }
-          />
-        </button>
+        <div>
+          <div>
+            <h5 data-testid={ `${index}-horizontal-top-text` }>
+              { topText }
+            </h5>
+          </div>
+          <Link to={ `/${type}s/${id}` }>
+            <h4 data-testid={ `${index}-horizontal-name` }>
+              { name }
+            </h4>
+          </Link>
+          { isCopied && <span>Link copied!</span> }
+        </div>
+        <div>
+          <button
+            className={ `${styles.button__share} $` }
+            type="button"
+            onClick={ () => handleCopyClick() }
+          >
+            <img
+              alt="shareButton"
+              src={ shareIcon }
+              data-testid={ `${index}-horizontal-share-btn` }
+            />
+          </button>
+          <button
+            className={ `${styles.button} $` }
+            type="button"
+            onClick={ () => handleRemoveFavoriteClick() }
+          >
+            <img
+              alt="favorite button"
+              src={ favoriteIcon }
+              data-testid={ `${index}-horizontal-favorite-btn` }
+            />
+          </button>
+        </div>
       </div>
     </div>
   );

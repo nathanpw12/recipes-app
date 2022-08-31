@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import styles from './Profile.module.css';
 
 const Profile = () => {
   const history = useHistory();
@@ -17,49 +18,44 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div className={ styles.main }>
       <Header />
-      <br />
-      {/* Resgatar email do local storage e mostrar nesse h2 */}
-      <h2 data-testid="profile-email">{dados?.email}</h2>
-      <button
-        type="button"
-        data-testid="profile-done-btn"
-        onClick={
-          () => redirectHistory('/done-recipes')
-        }
-      >
-        Done Recipes
+      <div className={ styles.form }>
 
-      </button>
-      <br />
-      <br />
-      <button
-        type="button"
-        data-testid="profile-favorite-btn"
-        onClick={
-          () => redirectHistory('/favorite-recipes')
-        }
-      >
-        Favorite Recipes
+        <h2 className={ styles.h2 } data-testid="profile-email">{dados?.email}</h2>
 
-      </button>
-      <br />
-      <br />
-      <button
-        type="button"
-        data-testid="profile-logout-btn"
-        onClick={
-          () => redirectLogout()
-        }
-      >
-        Logout
-
-      </button>
-      <br />
-      <br />
+        <button
+          className={ `${styles.button} ${styles.button__hover}` }
+          type="button"
+          data-testid="profile-done-btn"
+          onClick={
+            () => redirectHistory('/done-recipes')
+          }
+        >
+          Done Recipes
+        </button>
+        <button
+          className={ `${styles.button} ${styles.button__hover}` }
+          type="button"
+          data-testid="profile-favorite-btn"
+          onClick={
+            () => redirectHistory('/favorite-recipes')
+          }
+        >
+          Favorite Recipes
+        </button>
+        <button
+          className={ `${styles.button} ${styles.button__hover}` }
+          type="button"
+          data-testid="profile-logout-btn"
+          onClick={
+            () => redirectLogout()
+          }
+        >
+          Logout
+        </button>
+      </div>
       <Footer />
-
     </div>
   );
 };

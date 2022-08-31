@@ -1,7 +1,7 @@
 import clipboardCopy from 'clipboard-copy';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-// import styles from '../components/ProgressList.module.css';
+// import style from '../components/ProgressList.module.css';
 import {
   disableButton,
   funcFinishRecipe, getLists, heartFunction, lineText
