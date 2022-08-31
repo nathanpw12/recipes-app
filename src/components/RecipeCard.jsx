@@ -19,8 +19,8 @@ function RecipeCard({ recipeData: { index, thumbnail, recipeName, id, pathname }
           alt="foto"
           src={ thumbnail }
         />
-        <span data-testid={ `${styles.text}` }>
-          { recipeName }
+        <span className={ styles.text } data-testid={ `${styles.text}` }>
+          { `${recipeName.slice(0, 15)}` }
         </span>
       </Link>
     </div>

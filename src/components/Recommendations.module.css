@@ -6,8 +6,24 @@
 }
 
 .container {
+  border: none;
   bottom: 0;
-  left: 0;
+  left: 10%;
   position: fixed;
-  width: 100%;
+  width: 80%;
+  background-color: #8f69f7;
+  /* border: 1px solid #262a34; */
+  border-radius: 10px;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.container:hover {
+  background-color: #764bee;
+  color: #fff;
+  cursor: pointer;
 }

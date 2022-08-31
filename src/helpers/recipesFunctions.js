@@ -122,4 +122,4 @@ export const heartFunction = (param, recipeid, comida, setheart) => {
 
 const limit = 32;
 
-export const youVideo = (param) => <iframe data-testid="video" width="560" height="315" src={ `https://www.youtube.com/embed/${param.strYoutube.substr(limit)}` } title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />;
+export const youVideo = (param) => <iframe data-testid="video" width="352" height="200" src={ `https://www.youtube.com/embed/${param.strYoutube.substr(limit)}` } title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />;

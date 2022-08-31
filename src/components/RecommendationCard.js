@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 // import PropTypes from 'prop-types';
+import style from '../pages/RecipeDetails.module.css';
 
 function RecommendationCard({ data, recipe, testidCard, testidTitle }) {
 //   console.log(key);
   return (
     <div>
       {recipe === 'food' ? (
-        <div data-testid={ testidCard }>
+
+        <div className={ style.card__recomendation } data-testid={ testidCard }>
           <img
             src={ data.strMealThumb }
             alt={ data.strMeal }
@@ -17,8 +19,9 @@ function RecommendationCard({ data, recipe, testidCard, testidTitle }) {
           <p>{data.strCategory}</p>
           <p data-testid={ testidTitle }>{data.strMeal}</p>
         </div>
+
       ) : (
-        <div data-testid={ testidCard }>
+        <div className={ style.card__recomendation } data-testid={ testidCard }>
           <img
             src={ data.strDrinkThumb }
             alt={ data.strDrink }

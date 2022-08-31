@@ -1,13 +1,14 @@
+import clipboardCopy from 'clipboard-copy';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import clipboardCopy from 'clipboard-copy';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import shareIcon from '../images/shareIcon.svg';
-import { getLists, heartFunction, youVideo } from '../helpers/recipesFunctions';
 import RecommendationCard from '../components/RecommendationCard';
 import styles from '../components/Recommendations.module.css';
+import { getLists, heartFunction, youVideo } from '../helpers/recipesFunctions';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import style from './RecipeDetails.module.css';
 
 // http://localhost:3000/drinks/11007
 // http://localhost:3000/foods/52772
@@ -64,6 +65,7 @@ const RecipeDetails = (props) => {
 
   const generateList = ingredients.map((e) => (
     <p
+      className={ style.ingredients }
       data-testid={ `${ingredients.indexOf(e)}-ingredient-name-and-measure` }
       id={ `${ingredients.indexOf(e)}-ingredient-step` }
       key={ e }
@@ -106,6 +108,7 @@ const RecipeDetails = (props) => {
 
   const btnShare = (
     <button
+      className={ `${style.button} ${style.button__hover}` }
       type="button"
       data-testid="share-btn"
       src={ shareIcon }
@@ -120,6 +123,7 @@ const RecipeDetails = (props) => {
 
   const thumb = (param1, param2) => (
     <img
+      className={ style.image }
       src={ food[param1] }
       alt={ food[param2] }
       data-testid="recipe-photo"
@@ -130,6 +134,7 @@ const RecipeDetails = (props) => {
 
   const btnFavorite = (param) => (
     <button
+      className={ `${style.button} ${style.button__hover}` }
       type="button"
       data-testid="favorite-btn"
       src={ heart ? blackHeartIcon : whiteHeartIcon }
@@ -169,47 +174,88 @@ const RecipeDetails = (props) => {
     <div>
       {
         match.path.includes('food') && food ? (
-          <div>
-            {thumb('strMealThumb', 'strMeal')}
-            <br />
-            {btnShare}
-            {btnFavorite('food')}
-            {share ? (<p>Link copied!</p>) : ('')}
-            <p data-testid="recipe-title">{food.strMeal}</p>
-            <p data-testid="recipe-category">{food.strCategory}</p>
-            <h3>Ingredients</h3>
+          <main className={ style.main }>
+            <div className={ style.card }>
+              {thumb('strMealThumb', 'strMeal')}
+              <p
+                className={ style.recipe__title }
+                data-testid="recipe-title"
+              >
+                {food.strMeal}
+              </p>
+              <p
+                className={ style.recipe__category }
+                data-testid="recipe-category"
+              >
+                {food.strCategory}
+              </p>
+            </div>
+            <div className={ style.share__fav__div }>
+              {btnShare}
+              {btnFavorite('food')}
+            </div>
+            {share ? (<p className={ style.link__copied }>Link copied!</p>) : ('')}
+            <div />
+            <h3 className={ style.titles }>Ingredients</h3>
             {generateList}
-            <h3>Instructions</h3>
-            <p data-testid="instructions">{food.strInstructions}</p>
-            <h3>Video</h3>
+            <h3 className={ style.titles }>Instructions</h3>
+            <p
+              className={ style.instructions }
+              data-testid="instructions"
+            >
+              {food.strInstructions}
+
+            </p>
+            <h3 className={ style.titles }>Video</h3>
             {youVideo(food)}
-            <h3>Recommended</h3>
-            <div className={ styles.recommendation }>
+            <h3 className={ style.titles }>Recommended</h3>
+            <div className={ style.recommendation }>
               {generateRecommendations('food')}
             </div>
             {!finalizada.includes(recipeId) && btnStart}
-          </div>
-        ) : (match.path.includes('drink') && food && (
-          <div>
-            {thumb('strDrinkThumb', 'strDrink')}
-            <br />
-            {btnShare}
-            {btnFavorite('drink')}
-            {share ? (<p>Link copied!</p>) : ('')}
-            <p data-testid="recipe-title">{food.strDrink}</p>
-            <p data-testid="recipe-category">{food.strAlcoholic}</p>
-            <h3>Ingredients</h3>
-            {generateList}
-            <h3>Instructions</h3>
-            <p data-testid="instructions">{food.strInstructions}</p>
-            <h3>Recommended</h3>
-            <div className={ styles.recommendation }>
-              {generateRecommendations('drink')}
+          </main>
+        )
+          : (match.path.includes('drink') && food && (
+            <div className={ style.main }>
+              <div className={ style.card }>
+                {thumb('strDrinkThumb', 'strDrink')}
+                <p
+                  className={ style.recipe__title }
+                  data-testid="recipe-title"
+                >
+                  {food.strDrink}
+
+                </p>
+                <p
+                  className={ style.recipe__title }
+                  data-testid="recipe-category"
+                >
+                  {food.strAlcoholic}
+
+                </p>
+              </div>
+              <div className={ style.share__fav__div }>
+                {btnShare}
+                {btnFavorite('drink')}
+              </div>
+              {share ? (<p className={ style.link__copied }>Link copied!</p>) : ('')}
+              <h3 className={ style.titles }>Ingredients</h3>
+              {generateList}
+              <h3 className={ style.titles }>Instructions</h3>
+              <p
+                className={ style.instructions }
+                data-testid="instructions"
+              >
+                {food.strInstructions}
+              </p>
+              <h3 className={ style.titles }>Recommended</h3>
+              <div className={ style.recommendation }>
+                {generateRecommendations('drink')}
+              </div>
+              {!finalizada.includes(recipeId) && btnStart}
             </div>
-            {!finalizada.includes(recipeId) && btnStart}
-          </div>
-        )
-        )
+          )
+          )
       }
     </div>
   );
