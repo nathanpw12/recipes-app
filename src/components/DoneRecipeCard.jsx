@@ -23,7 +23,7 @@ function DoneRecipeCard({ data, index }) {
           data-testid={ `${index}-${tags}-horizontal-tag` }
         >
           {tags}
-      </span>);
+        </span>);
     }
     if (tags.length === 2) {
       return tags.map((tag) => (
@@ -66,7 +66,7 @@ function DoneRecipeCard({ data, index }) {
                 { name }
               </h4>
             </Link>
-            { tags.length && renderTags() }
+            { tags.length && renderTags() } 
             <h5 data-testid={ `${index}-horizontal-done-date` }>
               { `Done in: ${doneDate}` }
             </h5>

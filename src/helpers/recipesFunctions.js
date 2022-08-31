@@ -59,7 +59,7 @@ export const funcFinishRecipe = (recipeid, comida) => {
     name: comida.strMeal ? comida.strMeal : comida.strDrink,
     image: comida.strMealThumb ? comida.strMealThumb : comida.strDrinkThumb,
     doneDate: formattedData,
-    tags: comida.strTags === null ? [] : comida.strTags.split(','),
+    tags: comida.strTags === null ? [''] : comida.strTags.split(','),
   };
   const fazendo = JSON.parse(localStorage.getItem('doneRecipes'));
   if (fazendo !== null && !fazendo.find((e) => e.id === recipeid)) {
