@@ -54,17 +54,27 @@ const Header = () => {
         {
           pathTitlesStrConvertDoneFav(doneRoute)
             ? (
-              <h2 data-testid="page-title">
-                Done Recipes
-              </h2>
+              <div className={ styles.done__fav__div }>
+                <h1
+                  className={ styles.done__title }
+                  data-testid="page-title"
+                >
+                  Done Recipes
+                </h1>
+              </div>
             ) : null
         }
         {
           pathTitlesStrConvertDoneFav(favRoute)
             ? (
-              <h2 data-testid="page-title">
-                Favorite Recipes
-              </h2>
+              <div className={ styles.done__fav__div }>
+                <h1
+                  className={ styles.fav__title }
+                  data-testid="page-title"
+                >
+                  Favorite Recipes
+                </h1>
+              </div>
             )
             : null
         }

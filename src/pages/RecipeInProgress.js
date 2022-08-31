@@ -1,13 +1,15 @@
-import PropTypes from 'prop-types';
+import clipboardCopy from 'clipboard-copy';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import clipboardCopy from 'clipboard-copy';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import styles from '../components/ProgressList.module.css';
+import {
+  disableButton,
+  funcFinishRecipe, getLists, heartFunction, lineText
+} from '../helpers/recipesFunctions';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
-import styles from '../components/ProgressList.module.css';
-import { disableButton, lineText, getLists,
-  funcFinishRecipe, heartFunction } from '../helpers/recipesFunctions';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import styles from './RecipesInProgress.module.css';
 
 // http://localhost:3000/drinks/11007/in-progress
 // http://localhost:3000/foods/52772/in-progress
@@ -54,22 +56,28 @@ const RecipeInProgress = (props) => {
 
   const generateList = ingredients.map((e) => (
     <div key={ ingredients.indexOf(e) }>
-      <label htmlFor={ `${ingredients.indexOf(e)}-checkbox` }>
-        <p
-          data-testid={ `${ingredients.indexOf(e)}-ingredient-step` }
-          id={ `${ingredients.indexOf(e)}-ingredient-step` }
-          className={ checkIn(e) ? styles.line : styles.none }
-        >
-          <input
-            type="checkbox"
-            onClick={ () => lineTexttt(`${ingredients.indexOf(e)}-checkbox`) }
-            id={ `${ingredients.indexOf(e)}-checkbox` }
-            checked={ check.includes(`${recipeId}-${ingredients.indexOf(e)}-checkbox`) }
-            className={ styles.input }
-          />
-          {measure[ingredients.indexOf(e)] ? `${e} - ${measure[ingredients.indexOf(e)]}`
-            : e}
-        </p>
+      <label
+        htmlFor={ `${ingredients.indexOf(e)}-checkbox` }
+      >
+        <div className={ styles.ingredients }>
+          <p
+            data-testid={ `${ingredients.indexOf(e)}-ingredient-step` }
+            id={ `${ingredients.indexOf(e)}-ingredient-step` }
+            className={ checkIn(e) ? styles.line : styles.none }
+          >
+
+            <input
+              type="checkbox"
+              onClick={ () => lineTexttt(`${ingredients.indexOf(e)}-checkbox`) }
+              id={ `${ingredients.indexOf(e)}-checkbox` }
+              checked={ check
+                .includes(`${recipeId}-${ingredients.indexOf(e)}-checkbox`) }
+            />
+
+            {measure[ingredients.indexOf(e)] ? `${e} - ${measure[ingredients.indexOf(e)]}`
+              : e}
+          </p>
+        </div>
       </label>
     </div>
   ));
@@ -95,6 +103,7 @@ const RecipeInProgress = (props) => {
 
   const btnFinish = (
     <button
+      className={ styles.container }
       type="submit"
       data-testid="finish-recipe-btn"
       onClick={ funcFinishRecipee }
@@ -106,6 +115,7 @@ const RecipeInProgress = (props) => {
 
   const btnShare = (
     <button
+      className={ `${styles.button} ${styles.button__hover}` }
       type="button"
       data-testid="share-btn"
       src={ shareIcon }
@@ -120,6 +130,7 @@ const RecipeInProgress = (props) => {
 
   const thumb = (param1, param2) => (
     <img
+      className={ styles.image }
       src={ food[param1] }
       alt={ food[param2] }
       data-testid="recipe-photo"
@@ -130,6 +141,7 @@ const RecipeInProgress = (props) => {
 
   const btnFavorite = (param) => (
     <button
+      className={ `${styles.button} ${styles.button__hover}` }
       type="button"
       data-testid="favorite-btn"
       src={ heart ? blackHeartIcon : whiteHeartIcon }
@@ -147,33 +159,59 @@ const RecipeInProgress = (props) => {
       {
         match.path.includes('food') && food ? (
           <div>
-            {thumb('strMealThumb', 'strMeal')}
-            <br />
-            {btnShare}
-            {btnFavorite('food')}
-            {share ? (<p>Link copied!</p>) : ('')}
-            <p data-testid="recipe-title">{food.strMeal}</p>
-            <p data-testid="recipe-category">{food.strCategory}</p>
-            <h3>Ingredients</h3>
-            {generateList}
-            <h3>Instructions</h3>
-            <p data-testid="instructions">{food.strInstructions}</p>
-            {!finalizada.includes(recipeId) && btnFinish}
+            <main className={ styles.main }>
+              <div className={ styles.card }>
+                {thumb('strMealThumb', 'strMeal')}
+                <p data-testid="recipe-title">{food.strMeal}</p>
+                <p data-testid="recipe-category">{food.strCategory}</p>
+              </div>
+
+              <div
+                className={ styles.share__fav__div }
+              >
+                {btnShare}
+                {btnFavorite('food')}
+              </div>
+              {share ? (<p>Link copied!</p>) : ('')}
+
+              <h3 className={ styles.titles }>Ingredients</h3>
+              {generateList}
+              <h3 className={ styles.titles }>Instructions</h3>
+              <p
+                className={ styles.instructions }
+                data-testid="instructions"
+              >
+                {food.strInstructions}
+
+              </p>
+              {!finalizada.includes(recipeId) && btnFinish}
+            </main>
           </div>
         ) : (
           <div>
-            {thumb('strDrinkThumb', 'strDrink')}
-            <br />
-            {btnShare}
-            {btnFavorite('drink')}
-            {share ? (<p>Link copied!</p>) : ('')}
-            <p data-testid="recipe-title">{food.strDrink}</p>
-            <p data-testid="recipe-category">{food.strAlcoholic}</p>
-            <h3>Ingredients</h3>
-            {generateList}
-            <h3>Instructions</h3>
-            <p data-testid="instructions">{food.strInstructions}</p>
-            {!finalizada.includes(recipeId) && btnFinish}
+            <main className={ styles.main }>
+              <div className={ styles.card }>
+                {thumb('strDrinkThumb', 'strDrink')}
+                <p data-testid="recipe-title">{food.strDrink}</p>
+                <p data-testid="recipe-category">{food.strAlcoholic}</p>
+              </div>
+              <div className={ styles.share__fav__div }>
+                {btnShare}
+                {btnFavorite('drink')}
+              </div>
+              {share ? (<p>Link copied!</p>) : ('')}
+              <h3 className={ styles.titles }>Ingredients</h3>
+              {generateList}
+              <h3 className={ styles.titles }>Instructions</h3>
+              <p
+                className={ styles.instructions }
+                data-testid="instructions"
+              >
+                {food.strInstructions}
+
+              </p>
+              {!finalizada.includes(recipeId) && btnFinish}
+            </main>
           </div>
         )
       }
@@ -181,16 +219,16 @@ const RecipeInProgress = (props) => {
   );
 };
 
-RecipeInProgress.propTypes = {
-  match: PropTypes.shape({
-    url: PropTypes.string,
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-    path: PropTypes.shape({
-      includes: PropTypes.func,
-    }),
-  }).isRequired,
-};
+// RecipeInProgress.propTypes = {
+//   match: PropTypes.shape({
+//     url: PropTypes.string,
+//     params: PropTypes.shape({
+//       id: PropTypes.string,
+//     }),
+//     path: PropTypes.shape({
+//       includes: PropTypes.func,
+//     }),
+//   }).isRequired,
+// };
 
 export default RecipeInProgress;

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import clipboardCopy from 'clipboard-copy';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
-import styles from './DoneRecipeCard.module.css';
+import styles from '../pages/DoneRecipes.module.css';
 
 function DoneRecipeCard({ data, index }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -18,7 +18,12 @@ function DoneRecipeCard({ data, index }) {
 
   const renderTags = () => {
     if (tags.length === 1) {
-      return <span data-testid={ `${index}-${tags}-horizontal-tag` }>{tags}</span>;
+      return (
+        <span
+          data-testid={ `${index}-${tags}-horizontal-tag` }
+        >
+          {tags}
+      </span>);
     }
     if (tags.length === 2) {
       return tags.map((tag) => (
@@ -37,45 +42,49 @@ function DoneRecipeCard({ data, index }) {
     clipboardCopy(contentToCopy);
   };
 
-  const topText = `${alcoholicOrNot || nationality} - ${category}`;
+  // const topText = `${alcoholicOrNot || nationality} - ${category}`;
 
   return (
-    <div>
-      <Link to={ `/${type}s/${id}` }>
-        <img
-          alt="foobar"
-          src={ image }
-          data-testid={ `${index}-horizontal-image` }
-          className={ styles.image }
-        />
-      </Link>
-      <div>
-        <div>
-          <h5 data-testid={ `${index}-horizontal-top-text` }>
-            { topText }
-          </h5>
-          { isCopied && <span>Link copied!</span> }
-          <button
-            type="button"
-            onClick={ () => handleCopyClick() }
-          >
-            <img
-              alt="shareButton"
-              src={ shareIcon }
-              data-testid={ `${index}-horizontal-share-btn` }
-            />
-          </button>
-        </div>
+    <div className={ styles.main }>
+      <div className={ styles.card }>
         <Link to={ `/${type}s/${id}` }>
-          <h4 data-testid={ `${index}-horizontal-name` }>
-            { name }
-          </h4>
+          <img
+            alt="foobar"
+            src={ image }
+            data-testid={ `${index}-horizontal-image` }
+            className={ styles.image }
+          />
         </Link>
-        <h5 data-testid={ `${index}-horizontal-done-date` }>
-          { `Done in: ${doneDate}` }
-        </h5>
-        { tags.length && renderTags() }
+        <div>
+          <div>
+            {/* <h5 data-testid={ `${index}-horizontal-top-text` }>
+              { topText }
+            </h5> */}
+
+            <Link to={ `/${type}s/${id}` }>
+              <h4 data-testid={ `${index}-horizontal-name` }>
+                { name }
+              </h4>
+            </Link>
+            { tags.length && renderTags() }
+            <h5 data-testid={ `${index}-horizontal-done-date` }>
+              { `Done in: ${doneDate}` }
+            </h5>
+          </div>
+        </div>
+        <button
+          className={ `${styles.button} $` }
+          type="button"
+          onClick={ () => handleCopyClick() }
+        >
+          <img
+            alt="shareButton"
+            src={ shareIcon }
+            data-testid={ `${index}-horizontal-share-btn` }
+          />
+        </button>
       </div>
+      { isCopied && <span>Link copied!</span> }
     </div>
   );
 }

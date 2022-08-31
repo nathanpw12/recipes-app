@@ -27,7 +27,7 @@ const SearchBar = () => {
         className={ `${styles.input} ${styles.input__placeholder}` }
         data-testid="search-input"
         value={ search }
-        placeholder="lookup for recipe"
+        placeholder="lookup for a recipe"
         name="inputName"
         onChange={ ({ target: { value } }) => setSearch(value) }
         type="text"

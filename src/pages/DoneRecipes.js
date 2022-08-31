@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DoneRecipeCard from '../components/DoneRecipeCard';
 import Header from '../components/Header';
 import { getLocalStorage } from '../helpers/localStorage';
+import styles from './DoneRecipes.module.css';
 
 const DoneRecipes = () => {
   const [noFilter, setNoFilter] = useState([]);
@@ -49,9 +50,9 @@ const DoneRecipes = () => {
   return (
     <div>
       <Header />
-      <fieldset>
-        <legend>Filtros</legend>
+      <div className={ styles.field }>
         <button
+          className={ `${styles.button__filter} ${styles.button__hover__filter}` }
           type="button"
           data-testid="filter-by-all-btn"
           onClick={ () => handleNoFilter() }
@@ -59,6 +60,7 @@ const DoneRecipes = () => {
           All
         </button>
         <button
+          className={ `${styles.button__filter} ${styles.button__hover__filter}` }
           type="button"
           data-testid="filter-by-food-btn"
           onClick={ () => handleFoodFilter() }
@@ -66,13 +68,14 @@ const DoneRecipes = () => {
           Food
         </button>
         <button
+          className={ `${styles.button__filter} ${styles.button__hover__filter}` }
           type="button"
           data-testid="filter-by-drink-btn"
           onClick={ () => handleDrinkFilter() }
         >
           Drink
         </button>
-      </fieldset>
+      </div>
       <main>
         { renderDoneRecipeCards() }
       </main>

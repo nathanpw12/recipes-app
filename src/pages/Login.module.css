@@ -61,7 +61,7 @@
 
 .button__disable:disabled,
 button[disabled]{
-  background-color: #c2acff;
+  background-color: #aa8cfa;
   border: #0040dd;
   color: #fff;
   cursor: not-allowed;
@@ -73,9 +73,9 @@ button[disabled]{
 }
 
 .show__password {
-  position: absolute;
-  top: 321px;
-  right: 66px; 
+  position: relative;
+  top: -95px;
+  right: -235px; 
   width: 20px;
   cursor: pointer;
 }

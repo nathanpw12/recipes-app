@@ -1,9 +1,8 @@
 import clipboardCopy from 'clipboard-copy';
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecommendationCard from '../components/RecommendationCard';
-import styles from '../components/Recommendations.module.css';
+import styles from '../components/RecommendationCard.module.css';
 import { getLists, heartFunction, youVideo } from '../helpers/recipesFunctions';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
@@ -261,16 +260,16 @@ const RecipeDetails = (props) => {
   );
 };
 
-RecipeDetails.propTypes = {
-  match: PropTypes.shape({
-    url: PropTypes.string,
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-    path: PropTypes.shape({
-      includes: PropTypes.func,
-    }),
-  }).isRequired,
-};
+// RecipeDetails.propTypes = {
+//   match: PropTypes.shape({
+//     url: PropTypes.string,
+//     params: PropTypes.shape({
+//       id: PropTypes.string,
+//     }),
+//     path: PropTypes.shape({
+//       includes: PropTypes.func,
+//     }),
+//   }).isRequired,
+// };
 
 export default RecipeDetails;

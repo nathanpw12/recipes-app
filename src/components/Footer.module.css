@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-around;  
   color: white;
-  align-items: center;
+  /* align-items: center; */
   bottom: 0;
   left: 0;
   position: fixed;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   width: 100%;
   /* background-color: #252a33; */
 }
@@ -22,15 +22,15 @@
   background-color: #8f69f7;
   border: none;
   /* border-radius: 15px; */
-  width: 45%;
+  /* max-width: 50%; */
+  width: 25%;
   /* margin-left: 2px;
   margin-bottom: 5px;
   margin-top: 4px; */
-  justify-content: center;
-  border-radius: 20px;
-  
+  /* justify-content: center; */
+  border-radius: 15px;
   /* margin-top: 5px; */
-  padding: 2px;
+  padding: 4px;
   color: white;
 }
 

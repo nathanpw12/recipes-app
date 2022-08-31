@@ -4,23 +4,9 @@ import React from 'react';
 import style from '../pages/RecipeDetails.module.css';
 
 function RecommendationCard({ data, recipe, testidCard, testidTitle }) {
-//   console.log(key);
   return (
     <div>
-      {recipe === 'food' ? (
-
-        <div className={ style.card__recomendation } data-testid={ testidCard }>
-          <img
-            src={ data.strMealThumb }
-            alt={ data.strMeal }
-            width="250px"
-            height="150px"
-          />
-          <p>{data.strCategory}</p>
-          <p data-testid={ testidTitle }>{data.strMeal}</p>
-        </div>
-
-      ) : (
+      {recipe === 'drink' ? (
         <div className={ style.card__recomendation } data-testid={ testidCard }>
           <img
             src={ data.strDrinkThumb }
@@ -28,8 +14,19 @@ function RecommendationCard({ data, recipe, testidCard, testidTitle }) {
             width="250px"
             height="150px"
           />
-          <p>{data.strAlcoholic}</p>
           <p data-testid={ testidTitle }>{data.strDrink}</p>
+          <p>{data.strAlcoholic}</p>
+        </div>
+      ) : (
+        <div className={ style.card__recomendation } data-testid={ testidCard }>
+          <img
+            src={ data.strMealThumb }
+            alt={ data.strMeal }
+            width="250px"
+            height="150px"
+          />
+          <p data-testid={ testidTitle }>{data.strMeal}</p>
+          <p>{data.strCategory}</p>
         </div>
       )}
     </div>

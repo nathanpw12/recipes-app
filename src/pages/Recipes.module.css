@@ -8,16 +8,17 @@
 .card__container {
   display: flex;
   flex-flow: row wrap;
-  gap: 25px;
+  gap: 45px;
   justify-content: center;
   max-width: 360px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 } 
 
 .section {
   display: flex;
   justify-content: center;
   margin-top: 12px;
+  width: 100%;
   flex-wrap: wrap;
   /* max-width: 200px; */
   padding-bottom: 12px;
@@ -25,8 +26,9 @@
 }
 
 .button {
-  background-color: #8f69f7;
+  background-color: #8258f8;
   border: 1px solid #262a34;
+  color: white;
   border-radius: 40px;
   width: 30%;
   margin-left: 2px;
@@ -35,8 +37,7 @@
   /* border-radius: 5px; */
   /* margin-top: 5px; */
   padding: 4px;
-  color: black;
-  font-weight: 450;
+  font-weight: bolder;
 }
 
 .button__hover:hover {
