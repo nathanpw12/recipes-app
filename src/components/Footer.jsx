@@ -14,6 +14,7 @@ const Footer = () => {
   return (
     <div data-testid="footer" className={ styles.container }>
       <button
+        className={ `${styles.button__footer} ${styles.button__hover__footer}` }
         type="button"
         onClick={
           () => redirectHistory('/drinks')
@@ -25,8 +26,8 @@ const Footer = () => {
           data-testid="drinks-bottom-btn"
         />
       </button>
-      Footer
       <button
+        className={ `${styles.button__footer} ${styles.button__hover__footer}` }
         data-testid="meals-bottom-btn"
         type="button"
         onClick={

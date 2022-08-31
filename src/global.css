@@ -69,3 +69,6 @@ code {
     monospace;
 }
 
+a {
+	all: unset
+}

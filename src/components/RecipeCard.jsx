@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './RecipeCard.module.css';
 
@@ -7,16 +7,19 @@ function RecipeCard({ recipeData: { index, thumbnail, recipeName, id, pathname }
   return (
     <div
       data-testid={ `${index}-recipe-card` }
-      className={ styles.container }
     >
-      <Link to={ `${pathname}/${id}` } data-testid="card-link">
+      <Link
+        className={ styles.container }
+        to={ `${pathname}/${id}` }
+        data-testid="card-link"
+      >
         <img
           className={ styles['card-image'] }
           data-testid={ `${index}-card-img` }
           alt="foto"
           src={ thumbnail }
         />
-        <span data-testid={ `${index}-card-name` }>
+        <span data-testid={ `${styles.text}` }>
           { recipeName }
         </span>
       </Link>

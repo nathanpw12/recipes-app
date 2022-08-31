@@ -1,6 +1,39 @@
 .container {
+  display: flex;
+  justify-content: space-between;  
+  color: white;
+  align-items: center;
   bottom: 0;
   left: 0;
   position: fixed;
   width: 100%;
+  background-color: #252a33;
+}
+
+.div {
+  display: flex;
+  justify-content: space-between;
+  width: 360px;
+  align-items: baseline;
+}
+
+.button__footer {
+  background-color: #8f69f7;
+  border: 1px solid #252a33;
+  /* border-radius: 15px; */
+  width: 50%;
+  /* margin-left: 2px;
+  margin-bottom: 5px;
+  margin-top: 4px; */
+  justify-content: center;
+  /* border-radius: 5px; */
+  /* margin-top: 5px; */
+  /* padding: 4px; */
+  color: white;
+}
+
+.button__hover__footer:hover {
+  background-color: #764bee;
+  color: #fff;
+  cursor: pointer;
 }

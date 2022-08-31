@@ -1,12 +1,23 @@
 .container {
   display: flex;
   flex-direction: column;
-  max-height: 120px;
-  max-width: 100px;
+  background-color: white;
+  max-height: 200px;
+  max-width: 175spx;
+  height: 140px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgb(0, 0, 0);
+  align-items: center;
+  overflow: hidden;
+  /* padding: 40px 60px; */
 }
 
 .card-image {
-  height: 100px;
-  width: 100px;
+  /* height: 100px; */
+  max-width: 120px;
+  /* border-radius: 10px; */
 }
 
+.text {
+  margin-top: 10px;
+}
