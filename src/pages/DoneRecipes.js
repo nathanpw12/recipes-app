@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DoneRecipeCard from '../components/DoneRecipeCard';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getLocalStorage } from '../helpers/localStorage';
 import styles from './DoneRecipes.module.css';
@@ -79,6 +80,7 @@ const DoneRecipes = () => {
       <main>
         { renderDoneRecipeCards() }
       </main>
+      <Footer />
     </div>
   );
 };

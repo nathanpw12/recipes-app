@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getLocalStorage } from '../helpers/localStorage';
 import styles from './FavoriteRecipes.module.css';
@@ -80,6 +81,7 @@ const FavoriteRecipes = () => {
       <main>
         { renderFavoriteRecipeCards() }
       </main>
+      <Footer />
     </div>
   );
 };
