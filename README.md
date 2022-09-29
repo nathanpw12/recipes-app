@@ -14,3 +14,4 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 - quais arquivos/pastas foram desenvolvidos pela Trybe.
 
 -->
+This project is not responsive yet, if you are accessing it from a computer, please reduce the size of the window so that the application fits on the screen.
